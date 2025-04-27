@@ -4,6 +4,7 @@ from .models import Table, MenuItem, Order, OrderItem
 from django.db import transaction
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 
 @csrf_exempt
@@ -51,3 +52,8 @@ def place_order(request):
 
     except Exception as e:
         return Response({'error': str(e)}, status=400)
+
+
+@api_view(['GET'])
+def hello(request):
+    return Response('Hello World')
